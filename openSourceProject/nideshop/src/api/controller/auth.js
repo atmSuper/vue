@@ -7,6 +7,9 @@ module.exports = class extends Base {
     const clientIp = this.ctx.ip;
 
     // 解释用户数据
+    let weixin = await this.service('weixin', 'api').login(code, fullUserInfo);
+    console.log('看看结果');
+    console.log(weixin);
     const { errno, errmsg, data: userInfo } = await this.service('weixin', 'api').login(code, fullUserInfo);
     if (errno !== 0) {
       return this.fail(errno, errmsg);

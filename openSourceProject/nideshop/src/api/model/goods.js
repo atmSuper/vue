@@ -16,6 +16,7 @@ module.exports = class extends think.Model {
    */
   async getSpecificationList(goodsId) {
     // 根据sku商品信息，查找规格值列表
+    // alias 设置别名
     const specificationRes = await this.model('goods_specification').alias('gs')
       .field(['gs.*', 's.name'])
       .join({
@@ -25,7 +26,6 @@ module.exports = class extends think.Model {
         on: ['specification_id', 'id']
       })
       .where({goods_id: goodsId}).select();
-
     const specificationList = [];
     const hasSpecificationList = {};
     // 按规格名称分组

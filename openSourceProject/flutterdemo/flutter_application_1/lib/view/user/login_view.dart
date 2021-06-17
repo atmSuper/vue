@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/base/view.dart';
-
+import 'package:flutter_application_1/global/Global.dart';
+import 'package:flutter_application_1/viewmodel/CounterModel.dart';
+import 'package:flutter_application_1/viewmodel/login_viewmodel.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class LoginView extends StatefulWidget {
@@ -10,6 +15,25 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  TextEditingController? _user;
+  TextEditingController? _pass; 
+  
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _user = new TextEditingController();
+    _pass = new TextEditingController();
+    loadData();
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+     print('结束了');
+    _user?.dispose();
+    _pass?.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +55,7 @@ class _LoginViewState extends State<LoginView> {
                    hintText: "请输入账号",
                    prefixIcon: Icon(Icons.person)
                 ),
+                controller: _user,
                 autocorrect: true,
                 textInputAction: TextInputAction.next,
               ),
@@ -40,6 +65,7 @@ class _LoginViewState extends State<LoginView> {
                   hintText: "请输入密码",
                   prefixIcon: Icon(Icons.lock),
                 ),
+                controller: _pass,
                 obscureText: true,
                 textInputAction: TextInputAction.send,
                 onSubmitted: (String) {
@@ -56,15 +82,19 @@ class _LoginViewState extends State<LoginView> {
                     textAlign: TextAlign.right,
                   ),
                 ),
+                onTap: (){
+                  print("找回密码");
+                },
               ),
-              SizedBox(height: 16.0,),
+              SizedBox(height: 5.0,),
               Container(
                 width: double.infinity,
                 child: RaisedButton(
-                  child: Text("登录"),
-                  onPressed:(){
-                    print('5555');
-                  }
+                  child: Text("登录222"),
+                  onPressed: (){
+                     _login();
+                    // // login();
+                  },
                 ),
               ),
               SizedBox(height: 5.0,),
@@ -82,5 +112,19 @@ class _LoginViewState extends State<LoginView> {
          ),
          ),
     );
+  }
+  void loadData() async {
+      SharedPreferences sp = await SharedPreferences.getInstance();
+      String? token = await sp.getString("token");
+      if(token!=null) {
+          Global.getInstance()!.dio!.options.headers["token"] = token;
+          context.read<LoginViewmodel>().tokenLogin(token);
+      }
+  }
+  void _login() async {
+     if(_user!.text.isEmpty){
+         EasyLoading.showError("账号不能为空！");
+     }
+     context.read<LoginViewmodel>().login(_user!.text,_pass!.text);
   }
 }

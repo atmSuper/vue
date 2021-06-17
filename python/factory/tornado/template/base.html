@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Default title{% end %}</title>
+</head>
+<body>
+    <h2>Please sing in.</h2>
+    <form method="post" action="/test/user">
+        <p>Name:<br><input type="text" name="username"></p>
+        <p>Email:<br><input type="text" name="email"></p>
+        <p>Website:<br><input type="text" name="website"></p>
+        <p>Language:<br><input type="text" name="language"></p>
+        <input type="submit" value="ok,submit my information">
+    </form>
+    {% block student %} {% end %}
+    <h3>test upload file</h3>
+    <input id="fileInput" type="file" value="choose file">
+    <button id="uploadBtn">upload</button>
+</body>
+{% block script %} {% end %}
+</html>

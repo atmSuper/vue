@@ -19,3 +19,4 @@ stss  无状态的widget
 stf  有状态的widget
 flutter doctor 检查 flutter 环境状态
 flutter packages get 获取包
+flutter run --no-sound-null-safety  非空验证

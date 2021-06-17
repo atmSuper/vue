@@ -3,7 +3,8 @@ import 'package:dio/dio.dart';
 class Global {
   static Global? _instance;
   Dio? dio;
-  
+  String? token;
+  Map? user;
   static Global? getInstance() {
     if(_instance == null) _instance = new Global();
     return _instance;

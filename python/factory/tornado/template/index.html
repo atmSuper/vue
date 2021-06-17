@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block student %}
+    {% if username %}
+        <h4>{{ username }}</h4>
+    {% end %}
+{% end %}
+
+{% block script %}
+<script src="/static/test.js"></script>
+{% end %}

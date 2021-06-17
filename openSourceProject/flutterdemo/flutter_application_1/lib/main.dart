@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/global/Global.dart';
 import 'package:flutter_application_1/routes/routes.dart';
+import 'package:flutter_application_1/viewmodel/CounterModel.dart';
+import 'package:flutter_application_1/viewmodel/login_viewmodel.dart';
+import 'package:flutter_application_1/viewmodel/register_viewmodel.dart';
 import 'package:flutter_application_1/widgets/demo_01.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:provider/provider.dart';
+final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 void main() {
-  runApp(MyApp());
+  runApp(MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context)=>LoginViewmodel()),
+      ChangeNotifierProvider(create: (context)=>RegisterViewmodel()),
+      ChangeNotifierProvider(create: (context) => CounterModel())
+  ],
+   child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -11,11 +23,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     print('StatelessWidget build');
     return MaterialApp(
+      navigatorKey: navigatorKey,
       title: 'Flutter Demo 666',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      builder: EasyLoading.init(),
       routes: routes,
     );
   }

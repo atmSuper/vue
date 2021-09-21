@@ -1,31 +1,77 @@
 <template>
   <div class="login-container">
-    <Form class="login-form">
-      <!-- <FormItem name="account">
-              <Input
-              size="large"
-              />
-          </FormItem> -->
+    <el-form ref="login-form" class="login-form" auto-complete="on" label-position="left">
       <div class="title-container">
-        <h3 class="title">邻家小铺</h3>
+         <h3 class="title">小厨</h3>
       </div>
-    </Form>
+      <el-form-item prop="username">
+          <span class="svg-container">
+            <svg-icon icon-class="user" />
+          </span>
+          <el-input
+            name="username"
+            type="text"
+            auto-complete="on"
+          />
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Checkbox, Form, Input, Row, Col, Button, Divider } from 'ant-design-vue';
+import {  ElForm,ElFormItem,ElInput} from  'element-plus';
 export default defineComponent({
   name: 'login',
   setup() {},
   components: {
-    Form,
-    FormItem: Form.Item,
-    Input
+    ElForm,
+    ElFormItem,
+    ElInput
   }
 });
 </script>
 <style lang="scss">
+$bg:#283443;
+$light_gray:#eee;
+$cursor: #fff;
+
+@supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
+  .login-container .el-input input{
+    color: $cursor;
+    &::first-line {
+      color: $light_gray;
+    }
+  }
+}
+
+/* reset element-ui css */
+.login-container {
+  .el-input {
+    display: inline-block;
+    height: 47px;
+    width: 85%;
+    input {
+      background: transparent;
+      border: 0px;
+      -webkit-appearance: none;
+      border-radius: 0px;
+      padding: 12px 5px 12px 15px;
+      color: $light_gray;
+      height: 47px;
+      caret-color: $cursor;
+      &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px $bg inset !important;
+        -webkit-text-fill-color: $cursor !important;
+      }
+    }
+  }
+  .el-form-item {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    color: #454545;
+  }
+}
 $bg: #2d3a4b;
 $dark_gray: #889aa4;
 $light_gray: #eee;

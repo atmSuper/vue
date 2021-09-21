@@ -30,9 +30,8 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `
-          @import "./src/assets/scss/variable.scss";
-          @import "./src/assets/scss/mixin.scss";
-          @import "./src/assets/scss/base.scss";
+        @import "./src/styles/base/colors.scss";
+        @import "./src/styles/base/class.scss";
        `
       }
     }

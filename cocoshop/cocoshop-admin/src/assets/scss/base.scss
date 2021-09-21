@@ -3,7 +3,7 @@ $font_default_color:$font-color-shallow3;
 $font_default_size:$font_medium_s;
 
 *{
-	margin:0;padding:0;box-sizing:border-box;color:$font_default_color;
+	margin:0;padding:0;box-sizing:border-box;
 	/*@include font-dpr($font_default_size);*/
 }
 a{text-decoration:none;color:$font_default_color;}
@@ -45,6 +45,5 @@ a{text-decoration:none;color:$font_default_color;}
 	float:right;
 }
 .clear::after{
-	/*原理： overflow!=visible ;display!=block;float!=none;position!=static||relative 都可为元素创建BFC；消除边距重叠或者浮动产生的影响*/
 	content:'';overflow:hidden;clear:both;
 }

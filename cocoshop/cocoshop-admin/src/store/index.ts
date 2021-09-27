@@ -1,30 +1,9 @@
-import { createStore } from 'vuex'
+import type { App } from 'vue';
+import { createPinia } from 'pinia';
 
-const defaultState = {
-  count: 250
+const store = createPinia()
+
+export function setupStore(app: App<Element>) {
+   app.use(store);
 }
-
-export type IState = typeof defaultState
-
-const store = createStore<IState>({
-  strict: true,
-  state() {
-    return defaultState
-  },
-  getters: {
-    double(state) {
-      return state.count * 2
-    }
-  },
-  mutations: {
-    increment(state, payload) {
-      state.count++
-    }
-  },
-  actions: {
-    increment({ commit, state }, payload) {
-      commit('increment', payload)
-    }
-  }
-})
-export default store
+export { store } ;

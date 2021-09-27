@@ -2,7 +2,8 @@
   <div class="login-container">
     <el-form ref="login-form" class="login-form" auto-complete="on" label-position="left">
       <div class="title-container">
-         <h3 class="title">小厨</h3>
+         <h3 class="title">{{t('login.title')}}</h3>
+         <lang-select class="set-language"/>
       </div>
       <el-form-item prop="username">
           <span class="svg-container">
@@ -12,21 +13,43 @@
             name="username"
             type="text"
             auto-complete="on"
+            :placeholder="t('login.username')"
           />
       </el-form-item>
+      <el-form-item prop="password">
+        <span class="svg-container">
+          <svg-icon icon-class="password" />
+        </span>
+        <el-input
+          name="password"
+          auto-complete="on"
+          :placeholder="t('login.password')"
+           />
+        <span class="show-pwd" >
+          <svg-icon icon-class="eye" />
+        </span>
+      </el-form-item>
+      <el-button :loading="loading" type="info" style="width:100%;margin-bottom:30px;">{{ t('login.logIn') }}</el-button>
     </el-form>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import {  ElForm,ElFormItem,ElInput} from  'element-plus';
+import {  ElForm,ElFormItem,ElInput,ElButton} from  'element-plus';
+import LangSelect from '/@/components/LangSelect/index.vue'
+import { useI18n } from "/@/hook/web/useI18n";
 export default defineComponent({
   name: 'login',
-  setup() {},
+  setup() {
+     const { t } = useI18n();
+     return {t}
+  },
   components: {
     ElForm,
     ElFormItem,
-    ElInput
+    ElInput,
+    ElButton,
+    LangSelect
   }
 });
 </script>
@@ -104,6 +127,14 @@ $light_gray: #eee;
         right: 0px;
       }
     }
+    .svg-container {
+      padding: 6px 5px 6px 15px;
+      color: $dark_gray;
+      vertical-align: middle;
+      width: 30px;
+      display: inline-block;
+   }
+
   }
 }
 </style>

@@ -1,14 +1,23 @@
 import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
 import path from 'path';
-import styleImport from 'vite-plugin-style-import';
+import { resolve } from 'path';
+import { createVitePlugins } from './build/vite/plugin/index'
 
-// https://vitejs.dev/config/
+function pathResolve(dir: string) {
+  return resolve(process.cwd(), '.', dir);
+}
 export default defineConfig({
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src') // 设置`@`指向`src`
-    }
+    alias: [
+      {
+        find: 'vue-i18n',
+        replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
+      },
+      {
+        find: /\/@\//,
+        replacement: pathResolve('src') + '/',
+      },
+    ],
   },
   base: './', // 设置打包路径
   server: {
@@ -36,20 +45,21 @@ export default defineConfig({
       }
     }
   },
-  plugins: [
-    vue(),
-    styleImport({
-      libs: [
-        {
-          libraryName: 'element-plus',
-          resolveStyle: (name) => {
-            return `element-plus/lib/theme-chalk/${name}.css`;
-          },
-          resolveComponent: (name) => {
-            return `element-plus/lib/${name}`;
-          }
-        }
-      ]
-    })
-  ]
+  plugins:createVitePlugins()
+  // plugins: [
+  //   vue(),
+  //   styleImport({
+  //     libs: [
+  //       {
+  //         libraryName: 'element-plus',
+  //         resolveStyle: (name) => {
+  //           return `element-plus/lib/theme-chalk/${name}.css`;
+  //         },
+  //         resolveComponent: (name) => {
+  //           return `element-plus/lib/${name}`;
+  //         }
+  //       }
+  //     ]
+  //   })
+  // ]
 });

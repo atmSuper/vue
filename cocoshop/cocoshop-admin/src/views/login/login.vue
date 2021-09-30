@@ -41,27 +41,27 @@ import {  ElForm,ElFormItem,ElInput,ElButton } from  'element-plus';
 import LangSelect from '/@/components/LangSelect/index.vue'
 import { useI18n } from "/@/hook/web/useI18n";
 import { useFormRules,useFormValid} from './useLogin';
-// import instance from '/@/api/user';
 import { login } from '/@/api/user';
+import { useUserStoreWithOut } from '/@/store/modules/user';
 export default defineComponent({
   name: 'login',
   setup() {
-    
      const { t } = useI18n();
      const formRef = ref();
      const { getFormRules } = useFormRules();
-
+  
      const loginForm = reactive({
         username: 'admin',
         password: 'admin'
      })
      const { validForm } = useFormValid(formRef);
-
+     
      async function handleLogin (){
         const data = await validForm();
         // instance.authLogin(unref(loginForm));
         login(unref(loginForm)).then(res=>{
-          
+           const useUserStore = useUserStoreWithOut();
+           useUserStore.setToken(res.data.token);
         });
      }
      return {t,formRef,loginForm,getFormRules,handleLogin}

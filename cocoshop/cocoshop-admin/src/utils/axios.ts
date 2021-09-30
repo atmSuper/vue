@@ -31,7 +31,7 @@ axios.interceptors.response.use(
      * 根据你的项目实际情况来对 config 做处理
      * 这里对 config 不做任何处理，直接返回
      */
-    return response
+    return Promise.resolve(response.data);
   },
   (error) => {
     if (error.response && error.response.data) {

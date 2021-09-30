@@ -1,37 +1,81 @@
-# vite-vue3-ts
-
-#### Description
-
-vite2.0+vue3.0+ts 搭建的项目模板
-
-#### Software Architecture
-
-Software architecture description
-
-#### Installation
-
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### Instructions
-
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### Contribution
-
-1. Fork the repository
-2. Create Feat_xxx branch
-3. Commit your code
-4. Create Pull Request
-
-#### Gitee Feature
-
-1. You can use Readme_XXX.md to support different languages, such as Readme_en.md, Readme_zh.md
-2. Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3. Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4. The most valuable open source project [GVP](https://gitee.com/gvp)
-5. The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6. The most popular members [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+import {
+  ElAlert,
+  ElAside,
+  ElAutocomplete,
+  ElAvatar,
+  ElBacktop,
+  ElBadge,
+  ElBreadcrumb,
+  ElBreadcrumbItem,
+  ElButton,
+  ElButtonGroup,
+  ElCalendar,
+  ElCard,
+  ElCarousel,
+  ElCarouselItem,
+  ElCheckbox,
+  ElCheckboxButton,
+  ElCheckboxGroup,
+  ElCol,
+  ElCollapse,
+  ElCollapseItem,
+  ElColorPicker,
+  ElContainer,
+  ElDatePicker,
+  ElDialog,
+  ElDivider,
+  ElDrawer,
+  ElDropdown,
+  ElDropdownItem,
+  ElDropdownMenu,
+  ElFooter,
+  ElForm,
+  ElFormItem,
+  ElHeader,
+  ElIcon,
+  ElImage,
+  ElInput,
+  ElInputNumber,
+  ElLink,
+  ElMain,
+  ElMenu,
+  ElMenuItem,
+  ElMenuItemGroup,
+  ElOption,
+  ElOptionGroup,
+  ElPageHeader,
+  ElPagination,
+  ElPopconfirm,
+  ElPopover,
+  ElPopper,
+  ElProgress,
+  ElRadio,
+  ElRadioButton,
+  ElRadioGroup,
+  ElRate,
+  ElRow,
+  ElSelect,
+  ElSlider,
+  ElStep,
+  ElSteps,
+  ElSubmenu,
+  ElSwitch,
+  ElTabPane,
+  ElTable,
+  ElTableColumn,
+  ElTabs,
+  ElTag,
+  ElTimePicker,
+  ElTimeSelect,
+  ElTimeline,
+  ElTimelineItem,
+  ElTooltip,
+  ElTransfer,
+  ElTree,
+  ElUpload,
+  ElInfiniteScroll,
+  ElLoading,
+  ElMessage,
+  ElMessageBox,
+  ElNotification,
+} from 'element-plus';

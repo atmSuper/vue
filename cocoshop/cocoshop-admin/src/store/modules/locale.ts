@@ -14,7 +14,6 @@ interface LocaleState {
    localInfo: LocaleSetting;
  }
 
-
 export const useLocaleStore = defineStore({
      id:'app-locale',
      state:():LocaleState => ({

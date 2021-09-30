@@ -13,17 +13,21 @@ import 'element-plus/lib/theme-chalk/index.css';
 
 import { registerGlobComp } from '/@/components/registerGlobComp';
 
+import { initAppConfigStore }from '/@/logics/initAppConfig';
+
 // import { i18n } from '/@/lang/index'
 import { setupI18n } from "/@/locale/setupI18n"
 // const app = createApp(App)
 // app.use(router).use(store).mount('#app')
 
-
+// console.log(NUM)
 async function bootstrap() {
 
     const app = createApp(App);
     
     setupStore(app)
+    
+    initAppConfigStore()
     
     await setupI18n(app)
 

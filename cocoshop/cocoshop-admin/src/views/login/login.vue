@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <el-form ref="login-form" class="login-form" auto-complete="on" label-position="left">
+    <el-form ref="formRef" class="login-form" :model="loginForm" :rules="getFormRules" auto-complete="on" label-position="left">
       <div class="title-container">
          <h3 class="title">{{t('login.title')}}</h3>
          <lang-select class="set-language"/>
@@ -11,6 +11,7 @@
           </span>
           <el-input
             name="username"
+            v-model="loginForm.username"
             type="text"
             auto-complete="on"
             :placeholder="t('login.username')"
@@ -22,6 +23,7 @@
         </span>
         <el-input
           name="password"
+          v-model="loginForm.password"
           auto-complete="on"
           :placeholder="t('login.password')"
            />
@@ -29,20 +31,40 @@
           <svg-icon icon-class="eye" />
         </span>
       </el-form-item>
-      <el-button :loading="loading" type="info" style="width:100%;margin-bottom:30px;">{{ t('login.logIn') }}</el-button>
+      <el-button :loading="loading" type="info"  @click="handleLogin" style="width:100%;margin-bottom:30px;">{{ t('login.logIn') }}</el-button>
     </el-form>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
-import {  ElForm,ElFormItem,ElInput,ElButton} from  'element-plus';
+import { defineComponent, reactive, ref, unref} from 'vue';
+import {  ElForm,ElFormItem,ElInput,ElButton } from  'element-plus';
 import LangSelect from '/@/components/LangSelect/index.vue'
 import { useI18n } from "/@/hook/web/useI18n";
+import { useFormRules,useFormValid} from './useLogin';
+// import instance from '/@/api/user';
+import { login } from '/@/api/user';
 export default defineComponent({
   name: 'login',
   setup() {
+    
      const { t } = useI18n();
-     return {t}
+     const formRef = ref();
+     const { getFormRules } = useFormRules();
+
+     const loginForm = reactive({
+        username: 'admin',
+        password: 'admin'
+     })
+     const { validForm } = useFormValid(formRef);
+
+     async function handleLogin (){
+        const data = await validForm();
+        // instance.authLogin(unref(loginForm));
+        login(unref(loginForm)).then(res=>{
+          
+        });
+     }
+     return {t,formRef,loginForm,getFormRules,handleLogin}
   },
   components: {
     ElForm,

@@ -4,7 +4,7 @@ import Login from '/@/views/login/login.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: '/login',
     component: Login
   },
 ];

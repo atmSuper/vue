@@ -1,5 +1,5 @@
 <template>
-  <svg :class="svgClass" aria-hidden="true">
+  <svg :class="svgClass" aria-hidden="true"  :font-size="Size">
     <use :xlink:href="iconName" />
   </svg>
 </template>
@@ -15,6 +15,10 @@ export default defineComponent({
     className: {
       type: String,
       default: ''
+    },
+    Size:{
+       type:String,
+       default: ''
     }
   },
   setup(props) {

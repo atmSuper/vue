@@ -10,3 +10,10 @@ export interface LocaleSetting {
 
     availableLocales:LocaleType[];
 }
+
+export interface SideBar{
+
+    opened:boolean;
+
+    withoutAnimation: boolean;
+}

@@ -1,6 +1,7 @@
 export default {
   route: {
     dashboard: '首页',
+    guide: '引导页',
     system: '系统管理',
     operationMgr: '运维管理',
     cms: 'CMS管理',
@@ -121,6 +122,12 @@ export default {
     valueInput: '请输入参数值',
     lengthValidation: '长度在 2 到 20 个字符',
     lengthValidationCfgValue: '长度在必须大于2个字符'
-  }
+  },
+  tagsView: {
+    refresh: '刷新',
+    close: '关闭',
+    closeOthers: '关闭其它',
+    closeAll: '关闭所有'
+  },
 }
 

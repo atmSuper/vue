@@ -18,6 +18,10 @@ export default defineConfig({
         find: /\/@\//,
         replacement: pathResolve('src') + '/',
       },
+      {
+        find: /\/#\//,
+        replacement: pathResolve('types') + '/',
+      },
     ],
   },
   base: './', // 设置打包路径
@@ -42,6 +46,7 @@ export default defineConfig({
         additionalData: `
         @import "./src/styles/base/colors.scss";
         @import "./src/styles/base/class.scss";
+        @import "./src/styles/variables.scss";
        `
       }
     }

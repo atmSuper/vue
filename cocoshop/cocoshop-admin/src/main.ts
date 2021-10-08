@@ -7,6 +7,7 @@ import { setupStore } from '/@/store'
 // import '@/icons' // icon
 // 注册 svg icon
 import 'vite-plugin-svg-icons/register';
+// import '/@/assets/iconfont/iconfont.css'
 import '/@/styles/index.scss' 
 import importUiFramework from './utils/import-ui-framework'
 import 'element-plus/lib/theme-chalk/index.css';
@@ -15,8 +16,14 @@ import { registerGlobComp } from '/@/components/registerGlobComp';
 
 import { initAppConfigStore }from '/@/logics/initAppConfig';
 
+import { store } from '/@/vux'
+
+
+
 // import { i18n } from '/@/lang/index'
 import { setupI18n } from "/@/locale/setupI18n"
+
+import '/@/permission'
 // const app = createApp(App)
 // app.use(router).use(store).mount('#app')
 
@@ -33,6 +40,6 @@ async function bootstrap() {
 
     registerGlobComp(app)
 
-    app.use(router).mount('#app')
+    app.use(store).use(router).mount('#app')
 }
 void bootstrap();

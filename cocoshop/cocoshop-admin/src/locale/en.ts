@@ -1,6 +1,7 @@
 export default {
   route: {
     dashboard: 'Dashboard',
+    guide: 'Guide',
     system: 'System',
     operationMgr: 'Operation',
     messageMgr: 'Message',
@@ -121,5 +122,11 @@ export default {
     valueInput: 'Input config value',
     lengthValidation: ' Must be between 2 and 20 characters',
     lengthValidationCfgValue: 'Must be more than 2 characters'
-  }
+  },
+  tagsView: {
+    refresh: 'Refresh',
+    close: 'Close',
+    closeOthers: 'Close Others',
+    closeAll: 'Close All'
+  },
 }

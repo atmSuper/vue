@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "ant-design-vue": "^2.2.8",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "crypto-js": "^4.1.1",
     "element-plus": "^1.0.2-beta.48",
     "js-cookie": "^3.0.1",
